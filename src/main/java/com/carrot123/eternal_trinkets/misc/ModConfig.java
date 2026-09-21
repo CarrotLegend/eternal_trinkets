@@ -1,7 +1,11 @@
 package com.carrot123.eternal_trinkets.misc;
 
+import java.util.List;
+import java.util.Set;
+
 import com.carrot123.eternal_trinkets.EternalTrinkets;
 import com.carrot123.eternal_trinkets.item.EternalPotionPouchData;
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -9,28 +13,19 @@ import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import java.util.List;
-import java.util.Set;
-
 public final class ModConfig {
 
-    // ── mob.toml ─────────────────────────────────────────────────
     public static final ForgeConfigSpec MOB_CONFIG;
 
-    // 诡异菌精灵
     public static final ForgeConfigSpec.DoubleValue WARPED_FUNGUS_SPRITE_ATTACK_DAMAGE;
     public static final ForgeConfigSpec.DoubleValue WARPED_FUNGUS_SPRITE_MAX_HEALTH;
     public static final ForgeConfigSpec.DoubleValue WARPED_FUNGUS_SPRITE_ARMOR;
 
-    // 诡异菌伞
     public static final ForgeConfigSpec.DoubleValue WARPED_FUNGUS_UMBRELLA_COLLISION_DAMAGE;
     public static final ForgeConfigSpec.DoubleValue WARPED_FUNGUS_UMBRELLA_SPORE_DAMAGE;
     public static final ForgeConfigSpec.DoubleValue WARPED_FUNGUS_UMBRELLA_MAX_HEALTH;
     public static final ForgeConfigSpec.DoubleValue WARPED_FUNGUS_UMBRELLA_ARMOR;
 
-    // ── item.toml ────────────────────────────────────────────────
-    // Project rule: all item-related settings belong to this builder/spec.
-    // Give each item its own section; do not create per-item config files.
     public static final ForgeConfigSpec ITEM_CONFIG;
 
     public static final boolean DEFAULT_ETERNAL_POTION_POUCH_WHITELIST = false;
@@ -39,18 +34,16 @@ public final class ModConfig {
                     "minecraft:instant_health",
                     "minecraft:instant_damage",
                     "minecraft:saturation");
+
     public static final ForgeConfigSpec.BooleanValue ETERNAL_POTION_POUCH_WHITELIST;
     public static final ForgeConfigSpec.ConfigValue<List<? extends String>>
             ETERNAL_POTION_POUCH_EFFECT_LIST;
 
-    // 真菌之心
     public static final ForgeConfigSpec.DoubleValue FUNGAL_HEART_MAX_HEALTH;
     public static final ForgeConfigSpec.DoubleValue FUNGAL_HEART_HEAL_PER_SECOND;
 
-    // 黄金蜜药
     public static final ForgeConfigSpec.DoubleValue GOLDEN_HONEY_MEDICINE_MAX_HEALTH_BONUS;
 
-    // 超幸运的四叶草！
     public static final ForgeConfigSpec.IntValue CLOVER_LUCK;
     public static final ForgeConfigSpec.IntValue CLOVER_FORTUNE;
     public static final ForgeConfigSpec.IntValue CLOVER_LOOTING;
@@ -58,15 +51,14 @@ public final class ModConfig {
     public static final ForgeConfigSpec.DoubleValue CLOVER_DIAMOND_CHANCE;
     public static final ForgeConfigSpec.DoubleValue CLOVER_DROP_CHANCE;
 
-    // 暴躁河豚
     public static final ForgeConfigSpec.DoubleValue GRUMPY_PUFFERFISH_ATTACK_DAMAGE;
 
-    // 菌盖伞
+    public static final ForgeConfigSpec.DoubleValue STARLIGHT_STING_ATTACK_DAMAGE;
+
     public static final ForgeConfigSpec.DoubleValue FUNGUS_CAP_UMBRELLA_MAX_FALL_SPEED;
     public static final ForgeConfigSpec.DoubleValue FUNGUS_CAP_UMBRELLA_FALL_ACCELERATION;
 
     static {
-        // ── mob.toml builder ──
         ForgeConfigSpec.Builder mob = new ForgeConfigSpec.Builder();
 
         mob.push("warped_fungus_sprite");
@@ -98,23 +90,25 @@ public final class ModConfig {
 
         MOB_CONFIG = mob.build();
 
-        // ── item.toml builder ──
         ForgeConfigSpec.Builder item = new ForgeConfigSpec.Builder();
 
         item.push("fungal_heart");
         FUNGAL_HEART_MAX_HEALTH = item
-                .comment("Amount of max health added when wearing the Fungal Heart.",
+                .comment(
+                        "Amount of max health added when wearing the Fungal Heart.",
                         "Each 1.0 = half a heart. Default: 2.0 (one full heart).")
                 .defineInRange("fungalHeartMaxHealth", 2.0, 0.0, 1000.0);
         FUNGAL_HEART_HEAL_PER_SECOND = item
-                .comment("Health regenerated per second while wearing the Fungal Heart.",
+                .comment(
+                        "Health regenerated per second while wearing the Fungal Heart.",
                         "Each 1.0 = half a heart. Default: 1.0.")
                 .defineInRange("fungalHeartHealPerSecond", 1.0, 0.0, 100.0);
         item.pop();
 
         item.push("golden_honey_medicine");
         GOLDEN_HONEY_MEDICINE_MAX_HEALTH_BONUS = item
-                .comment("Max health added while wearing the Golden Honey Medicine.",
+                .comment(
+                        "Max health added while wearing the Golden Honey Medicine.",
                         "Each 1.0 = half a heart. Default: 5.0.")
                 .defineInRange("goldenHoneyMedicineMaxHealthBonus", 5.0, 0.0, 1024.0);
         item.pop();
@@ -146,24 +140,34 @@ public final class ModConfig {
                 .defineInRange("grumpyPufferfishAttackDamage", 2.0, 0.0, 1000.0);
         item.pop();
 
+        item.push("starlight_sting");
+        STARLIGHT_STING_ATTACK_DAMAGE = item
+                .comment("Attack damage added while wearing Starlight Sting. Default: 5.0")
+                .defineInRange("starlightStingAttackDamage", 5.0, 0.0, 1000.0);
+        item.pop();
+
         item.push("fungus_cap_umbrella");
         FUNGUS_CAP_UMBRELLA_MAX_FALL_SPEED = item
-                .comment("Max downward fall speed (blocks/tick) while holding the Fungus Cap Umbrella in the MAIN hand.",
+                .comment(
+                        "Max downward fall speed (blocks/tick) while holding the Fungus Cap Umbrella in the MAIN hand.",
                         "Vanilla player terminal fall speed is about 3.92. Lower = slower descent. Default: 0.5")
                 .defineInRange("fungusCapUmbrellaMaxFallSpeed", 0.5, 0.05, 10.0);
         FUNGUS_CAP_UMBRELLA_FALL_ACCELERATION = item
-                .comment("Net downward acceleration (blocks/tick^2) while holding the umbrella in the MAIN hand and falling.",
+                .comment(
+                        "Net downward acceleration (blocks/tick^2) while holding the umbrella in the MAIN hand and falling.",
                         "Vanilla player fall gravity is about 0.08. Lower = gentler acceleration. Default: 0.02")
                 .defineInRange("fungusCapUmbrellaFallAcceleration", 0.02, 0.0, 0.08);
         item.pop();
 
         item.push("eternalPotionPouch");
         ETERNAL_POTION_POUCH_WHITELIST = item
-                .comment("When false, effectList is a blacklist. When true, every effect in a potion must be listed.",
+                .comment(
+                        "When false, effectList is a blacklist. When true, every effect in a potion must be listed.",
                         "The list contains MobEffect registry IDs, not potion item or Potion IDs.")
                 .define("useWhitelist", DEFAULT_ETERNAL_POTION_POUCH_WHITELIST);
         ETERNAL_POTION_POUCH_EFFECT_LIST = item
-                .comment("MobEffect registry IDs checked when storing a potion.",
+                .comment(
+                        "MobEffect registry IDs checked when storing a potion.",
                         "Blacklist: any listed effect rejects the whole potion.",
                         "Whitelist: every effect must be listed or the whole potion is rejected.",
                         "Invalid IDs are ignored with a warning.",
@@ -173,6 +177,7 @@ public final class ModConfig {
                         DEFAULT_ETERNAL_POTION_POUCH_EFFECT_LIST,
                         entry -> entry instanceof String);
         item.pop();
+
         ITEM_CONFIG = item.build();
     }
 
@@ -199,9 +204,11 @@ public final class ModConfig {
         }
 
         boolean whitelist = ETERNAL_POTION_POUCH_WHITELIST.get();
+
         Set<ResourceLocation> entries =
                 EternalPotionPouchData.parseConfiguredEffectIds(
                         ETERNAL_POTION_POUCH_EFFECT_LIST.get());
+
         EternalTrinkets.LOGGER.debug(
                 "{} eternal potion pouch config from item.toml: mode={} entries={}",
                 action,

@@ -28,6 +28,7 @@
   "item.eternal_trinkets.golden_honey_medicine": "Golden Honey Medicine",
   "item.eternal_trinkets.void_capture_device": "Void Capture Device",
   "item.eternal_trinkets.eternal_potion_pouch": "Eternal Potion Pouch",
+  "item.eternal_trinkets.starlight_sting": "Starlight Sting",
 
   "tooltip.eternal_trinkets.fungal_heart.max_health": "§2+%s §2Max Health",
   "tooltip.eternal_trinkets.fungal_heart.heal": "§2+%s §2Health/sec",

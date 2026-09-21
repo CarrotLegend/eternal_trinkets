@@ -14,11 +14,15 @@ import net.minecraftforge.registries.RegistryObject;
 
 @SuppressWarnings("null")
 public final class ModCreativeTabs {
+
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, EternalTrinkets.MODID);
+            DeferredRegister.create(
+                    Registries.CREATIVE_MODE_TAB,
+                    EternalTrinkets.MODID);
 
     public static final RegistryObject<CreativeModeTab> ETERNAL_TRINKETS_TAB =
-            CREATIVE_MODE_TABS.register("eternal_trinkets",
+            CREATIVE_MODE_TABS.register(
+                    "eternal_trinkets",
                     () -> CreativeModeTab.builder()
                             .title(Component.translatable("itemGroup.eternal_trinkets"))
                             .icon(() -> new ItemStack(ModItems.WARPED_CORE.get()))
@@ -27,9 +31,11 @@ public final class ModCreativeTabs {
                                 output.accept(ModCurioItems.GOLDEN_HONEY_MEDICINE.get());
                                 output.accept(ModCurioItems.LUCKY_CLOVER.get());
                                 output.accept(ModCurioItems.GRUMPY_PUFFERFISH.get());
+                                output.accept(ModCurioItems.STARLIGHT_STING.get());
                                 output.accept(ModCurioItems.YIN_XUAN.get());
                                 output.accept(ModCurioItems.JIAO_BAI.get());
                                 output.accept(ModCurioItems.TIAN_YI.get());
+
                                 output.accept(ModItems.FUNGUS_CAP_UMBRELLA.get());
                                 output.accept(ModItems.WARPED_FUNGUS_CAP_BOAT.get());
                                 output.accept(ModItems.WARPED_FUNGUS_CAP.get());

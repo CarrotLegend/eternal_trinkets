@@ -1,4 +1,0 @@
-D:\ModIMade\eternal_trinkets\src\main\java\com\carrot123\eternal_trinkets\event\GoldenHoneyMedicineEvents.java:31: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
-                new ResourceLocation(CuriosApi.MODID, GoldenHoneyMedicineItem.BELT_SLOT)));
-                ^
-1 个警告

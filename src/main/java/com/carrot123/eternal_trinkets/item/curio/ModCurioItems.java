@@ -2,6 +2,7 @@ package com.carrot123.eternal_trinkets.item.curio;
 
 import com.carrot123.eternal_trinkets.EternalTrinkets;
 import com.carrot123.eternal_trinkets.item.curio.combat.GrumpyPufferfishItem;
+import com.carrot123.eternal_trinkets.item.curio.combat.StarlightStingItem;
 import com.carrot123.eternal_trinkets.item.curio.defense.JiaoBaiItem;
 import com.carrot123.eternal_trinkets.item.curio.defense.TianYiItem;
 import com.carrot123.eternal_trinkets.item.curio.defense.YinXuanItem;
@@ -30,6 +31,9 @@ public final class ModCurioItems {
 
     public static final RegistryObject<Item> GRUMPY_PUFFERFISH =
             ITEMS.register("grumpy_pufferfish", GrumpyPufferfishItem::new);
+
+    public static final RegistryObject<Item> STARLIGHT_STING =
+            ITEMS.register("starlight_sting", StarlightStingItem::new);
 
     public static final RegistryObject<Item> YIN_XUAN =
             ITEMS.register("yin_xuan", YinXuanItem::new);

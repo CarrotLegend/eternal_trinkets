@@ -28,6 +28,7 @@
   "item.eternal_trinkets.golden_honey_medicine": "黄金蜜药",
   "item.eternal_trinkets.void_capture_device": "虚无捕捉仪",
   "item.eternal_trinkets.eternal_potion_pouch": "永恒药袋",
+  "item.eternal_trinkets.starlight_sting": "星空之刺",
 
   "tooltip.eternal_trinkets.fungal_heart.max_health": "§2+%s §2最大生命值",
   "tooltip.eternal_trinkets.fungal_heart.heal": "§2每秒恢复 %s §2点生命值",
