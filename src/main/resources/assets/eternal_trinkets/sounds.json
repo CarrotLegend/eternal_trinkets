@@ -1,0 +1,56 @@
+{
+  "warped_fungus_sprite_die": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/die"
+    ],
+    "subtitle": "subtitles.eternal_trinkets.warped_fungus_sprite.die"
+  },
+  "warped_fungus_sprite_angry": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/angry"
+    ],
+    "subtitle": "subtitles.eternal_trinkets.warped_fungus_sprite.angry"
+  },
+  "warped_fungus_sprite_hurt": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/hurt"
+    ],
+    "subtitle": "subtitles.eternal_trinkets.warped_fungus_sprite.hurt"
+  },
+  "warped_fungus_sprite_ambient_1": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/ambient1"
+    ],
+    "subtitle": "subtitles.eternal_trinkets.warped_fungus_sprite.ambient"
+  },
+  "warped_fungus_sprite_ambient_2": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/ambient2"
+    ],
+    "subtitle": "subtitles.eternal_trinkets.warped_fungus_sprite.ambient"
+  },
+  "warped_fungus_sprite_ambient_3": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/ambient3"
+    ],
+    "subtitle": "subtitles.eternal_trinkets.warped_fungus_sprite.ambient"
+  },
+  "warped_fungus_sprite_step_1": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/step1"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "warped_fungus_sprite_step_2": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/step2"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "warped_fungus_sprite_step_3": {
+    "sounds": [
+      "eternal_trinkets:entity/warped_fungus_sprite/step3"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  }
+}

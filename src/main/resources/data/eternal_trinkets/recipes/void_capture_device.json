@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "PBP",
+    " N "
+  ],
+  "key": {
+    "C": {
+      "item": "eternal_trinkets:exquisite_core"
+    },
+    "P": {
+      "item": "eternal_trinkets:purpur_ingot"
+    },
+    "B": {
+      "item": "eternal_trinkets:special_glass_bottle"
+    },
+    "N": {
+      "item": "minecraft:netherite_scrap"
+    }
+  },
+  "result": {
+    "item": "eternal_trinkets:void_capture_device",
+    "count": 1
+  }
+}

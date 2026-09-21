@@ -1,0 +1,18 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "jdk.jdkhome": "D:/Java",
+    "jdk.project.jdkhome": "D:/Java",
+    "java.import.gradle.java.home": "D:/Java",
+    "java.import.gradle.enabled": true,
+    "java.import.gradle.wrapper.enabled": true,
+    "java.gradle.buildServer.enabled": "off",
+    "java.project.importOnFirstTimeStartup": "automatic",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "D:/Java",
+            "default": true
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_honey_infused_fruit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "eternal_trinkets:honey_infused_fruit"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_honey_infused_fruit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "eternal_trinkets:golden_honey_medicine"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " G ",
+    "HFH",
+    "VBV"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "H": {
+      "item": "minecraft:honeycomb"
+    },
+    "F": {
+      "item": "eternal_trinkets:honey_infused_fruit"
+    },
+    "V": {
+      "item": "minecraft:glass"
+    },
+    "B": {
+      "item": "minecraft:honey_bottle"
+    }
+  },
+  "result": {
+    "item": "eternal_trinkets:golden_honey_medicine",
+    "count": 1
+  }
+}

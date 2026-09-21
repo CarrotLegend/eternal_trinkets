@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "eternal_trinkets:item/void_capture_device"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "eternal_trinkets:captured_matter": 1.0
+      },
+      "model": "eternal_trinkets:item/void_capture_device_air"
+    },
+    {
+      "predicate": {
+        "eternal_trinkets:captured_matter": 2.0
+      },
+      "model": "eternal_trinkets:item/void_capture_device_aether"
+    },
+    {
+      "predicate": {
+        "eternal_trinkets:captured_matter": 3.0
+      },
+      "model": "eternal_trinkets:item/void_capture_device_pure_void"
+    },
+    {
+      "predicate": {
+        "eternal_trinkets:captured_matter": 4.0
+      },
+      "model": "eternal_trinkets:item/void_capture_device_thin_void"
+    },
+    {
+      "predicate": {
+        "eternal_trinkets:captured_matter": 5.0
+      },
+      "model": "eternal_trinkets:item/void_capture_device_hell_breath"
+    }
+  ]
+}

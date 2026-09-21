@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_exquisite_core": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "eternal_trinkets:exquisite_core"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_exquisite_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "eternal_trinkets:void_capture_device"
+    ]
+  }
+}
