@@ -44,6 +44,19 @@ public final class ModCurioItems {
     public static final RegistryObject<Item> TIAN_YI =
             ITEMS.register("tian_yi", TianYiItem::new);
 
+    public static final RegistryObject<Item> CRYSTAL_NECKLACE =
+            ITEMS.register("crystal_necklace", () -> new OptionalAttributeCurioItem(OptionalAttributeCurioItem.Kind.CRYSTAL_NECKLACE));
+    public static final RegistryObject<Item> COUNTER_EYE =
+            ITEMS.register("counter_eye", () -> new OptionalAttributeCurioItem(OptionalAttributeCurioItem.Kind.COUNTER_EYE));
+    public static final RegistryObject<Item> PRECISION_EYE =
+            ITEMS.register("precision_eye", () -> new OptionalAttributeCurioItem(OptionalAttributeCurioItem.Kind.PRECISION_EYE));
+    public static final RegistryObject<Item> NOVICE_MAGE_HAT =
+            ITEMS.register("novice_mage_hat", () -> new OptionalAttributeCurioItem(OptionalAttributeCurioItem.Kind.NOVICE_MAGE_HAT));
+    public static final RegistryObject<Item> GREEDY_FOCUS =
+            ITEMS.register("greedy_focus", GreedyFocusItem::new);
+    public static final RegistryObject<Item> FOREST_BRACELET =
+            ITEMS.register("forest_bracelet", () -> new OptionalAttributeCurioItem(OptionalAttributeCurioItem.Kind.FOREST_BRACELET));
+
     private ModCurioItems() {
         throw new UnsupportedOperationException("utility class");
     }

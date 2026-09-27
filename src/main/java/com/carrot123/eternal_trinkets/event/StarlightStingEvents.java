@@ -18,6 +18,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public final class StarlightStingEvents {
 
     private static final float EXTRA_VOID_DAMAGE = 5.0F;
+
     private static final ThreadLocal<Boolean> APPLYING_EXTRA_DAMAGE =
             ThreadLocal.withInitial(() -> false);
 
@@ -33,11 +34,14 @@ public final class StarlightStingEvents {
             return;
         }
 
-        if (event.getAmount() <= 0.0F || !Float.isFinite(event.getAmount())) {
+        float originalDamage = event.getAmount();
+
+        if (originalDamage <= 0.0F || !Float.isFinite(originalDamage)) {
             return;
         }
 
-        ServerPlayer attacker = PlayerDamageAttribution.resolve(event.getSource());
+        ServerPlayer attacker =
+                PlayerDamageAttribution.resolve(event.getSource());
 
         if (attacker == null || attacker == target) {
             return;
@@ -59,13 +63,20 @@ public final class StarlightStingEvents {
                 .getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD);
 
         DamageSource voidDamageSource =
-                new DamageSource(damageType, attacker, attacker);
+                new DamageSource(
+                        damageType,
+                        attacker,
+                        attacker);
+
+        int previousInvulnerableTime = target.invulnerableTime;
 
         APPLYING_EXTRA_DAMAGE.set(true);
 
         try {
+            target.invulnerableTime = 0;
             target.hurt(voidDamageSource, EXTRA_VOID_DAMAGE);
         } finally {
+            target.invulnerableTime = previousInvulnerableTime;
             APPLYING_EXTRA_DAMAGE.remove();
         }
     }

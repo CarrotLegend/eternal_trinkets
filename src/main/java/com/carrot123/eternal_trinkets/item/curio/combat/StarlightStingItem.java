@@ -1,17 +1,24 @@
 package com.carrot123.eternal_trinkets.item.curio.combat;
 
+import java.util.List;
 import java.util.UUID;
+
+import javax.annotation.Nullable;
 
 import com.carrot123.eternal_trinkets.item.curio.BaseCurioItem;
 import com.carrot123.eternal_trinkets.misc.ModConfig;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.SlotContext;
 
 public class StarlightStingItem extends BaseCurioItem {
@@ -26,8 +33,12 @@ public class StarlightStingItem extends BaseCurioItem {
     @Override
     @SuppressWarnings("null")
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(
-            SlotContext slotContext, UUID uuid, ItemStack stack) {
-        double attackDamage = ModConfig.STARLIGHT_STING_ATTACK_DAMAGE.get();
+            SlotContext slotContext,
+            UUID uuid,
+            ItemStack stack
+    ) {
+        double attackDamage =
+                ModConfig.STARLIGHT_STING_ATTACK_DAMAGE.get();
 
         if (attackDamage <= 0.0D) {
             return ImmutableMultimap.of();
@@ -39,6 +50,29 @@ public class StarlightStingItem extends BaseCurioItem {
                         ATTACK_DAMAGE_UUID,
                         "starlight_sting_attack_damage",
                         attackDamage,
-                        AttributeModifier.Operation.ADDITION));
+                        AttributeModifier.Operation.ADDITION
+                )
+        );
+    }
+
+    @Override
+    public void appendHoverText(
+            ItemStack stack,
+            @Nullable Level level,
+            List<Component> tooltip,
+            TooltipFlag flag
+    ) {
+        super.appendHoverText(
+                stack,
+                level,
+                tooltip,
+                flag
+        );
+
+        tooltip.add(
+                Component.translatable(
+                        "tooltip.eternal_trinkets.starlight_sting.void_damage"
+                ).withStyle(ChatFormatting.DARK_PURPLE)
+        );
     }
 }
