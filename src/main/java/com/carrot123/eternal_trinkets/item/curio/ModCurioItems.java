@@ -57,6 +57,12 @@ public final class ModCurioItems {
     public static final RegistryObject<Item> FOREST_BRACELET =
             ITEMS.register("forest_bracelet", () -> new OptionalAttributeCurioItem(OptionalAttributeCurioItem.Kind.FOREST_BRACELET));
 
+    public static final RegistryObject<Item> FOREST_CROWN =
+            ITEMS.register("forest_crown", ForestCrownItem::new);
+
+    public static final RegistryObject<Item> ELF_BOOTS =
+            ITEMS.register("elf_boots", ElfBootsItem::new);
+
     private ModCurioItems() {
         throw new UnsupportedOperationException("utility class");
     }

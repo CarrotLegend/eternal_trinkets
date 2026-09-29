@@ -16,6 +16,7 @@ import com.carrot123.eternal_trinkets.entity.client.WarpedFungusUmbrellaRenderer
 import com.carrot123.eternal_trinkets.entity.neutral.WarpedFungusSprite;
 import com.carrot123.eternal_trinkets.entity.neutral.WarpedFungusUmbrella;
 import com.carrot123.eternal_trinkets.event.FungusCapUmbrellaEvents;
+import com.carrot123.eternal_trinkets.event.ForestCrownEvents;
 import com.carrot123.eternal_trinkets.event.GrumpyPufferfishEvents;
 import com.carrot123.eternal_trinkets.event.LuckyCloverEvents;
 import com.carrot123.eternal_trinkets.event.NewCurioEvents;
@@ -81,6 +82,7 @@ public final class EternalTrinkets {
         MinecraftForge.EVENT_BUS.register(new YinYangCombatEvents());
         MinecraftForge.EVENT_BUS.register(new StarlightStingEvents());
         MinecraftForge.EVENT_BUS.register(new NewCurioEvents());
+        MinecraftForge.EVENT_BUS.register(new ForestCrownEvents());
     }
 
     private void onEntityAttributeCreation(
