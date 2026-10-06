@@ -69,4 +69,14 @@ public final class CuriosUtils {
             return false;
         }).orElse(false);
     }
+
+    public static boolean hasFunctionalCurio(LivingEntity wearer, Item item, String requiredSlot) {
+        if (wearer == null || item == null || requiredSlot == null) {
+            return false;
+        }
+        return CuriosApi.getCuriosInventory(wearer).map(curios ->
+                curios.findCurios(item).stream().anyMatch(result ->
+                        requiredSlot.equals(result.slotContext().identifier())
+                                && !result.slotContext().cosmetic())).orElse(false);
+    }
 }

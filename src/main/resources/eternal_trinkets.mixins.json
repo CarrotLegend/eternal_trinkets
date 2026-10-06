@@ -4,7 +4,7 @@
   "package": "com.carrot123.eternal_trinkets.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "eternal_trinkets.refmap.json",
-  "mixins": [ "ComponentSpecialTextMixin" ],
+  "mixins": [ "ComponentSpecialTextMixin", "PlayerFlyingSpeedMixin" ],
   "client": [ "FontSpecialTextMixin", "StringSplitterSpecialTextMixin", "ClientTextTooltipMixin" ],
   "injectors": { "defaultRequire": 1 }
 }

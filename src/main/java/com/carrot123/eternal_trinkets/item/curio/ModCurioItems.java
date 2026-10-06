@@ -3,6 +3,8 @@ package com.carrot123.eternal_trinkets.item.curio;
 import com.carrot123.eternal_trinkets.EternalTrinkets;
 import com.carrot123.eternal_trinkets.item.curio.combat.GrumpyPufferfishItem;
 import com.carrot123.eternal_trinkets.item.curio.combat.StarlightStingItem;
+import com.carrot123.eternal_trinkets.item.curio.curse.ExtinctionStoneItem;
+import com.carrot123.eternal_trinkets.item.curio.curse.HellEyeItem;
 import com.carrot123.eternal_trinkets.item.curio.defense.JiaoBaiItem;
 import com.carrot123.eternal_trinkets.item.curio.defense.TianYiItem;
 import com.carrot123.eternal_trinkets.item.curio.defense.YinXuanItem;
@@ -62,6 +64,18 @@ public final class ModCurioItems {
 
     public static final RegistryObject<Item> ELF_BOOTS =
             ITEMS.register("elf_boots", ElfBootsItem::new);
+
+    public static final RegistryObject<Item> EXTINCTION_STONE =
+            ITEMS.register("extinction_stone", ExtinctionStoneItem::new);
+
+    public static final RegistryObject<Item> HELL_EYE =
+            ITEMS.register("hell_eye", HellEyeItem::new);
+
+    public static final RegistryObject<Item> ANGEL_BLAZE_GUARD =
+            ITEMS.register("angel_blaze_guard", AngelBlazeGuardItem::new);
+
+    public static final RegistryObject<Item> HATRED_DIARY =
+            ITEMS.register("hatred_diary", HatredDiaryItem::new);
 
     private ModCurioItems() {
         throw new UnsupportedOperationException("utility class");

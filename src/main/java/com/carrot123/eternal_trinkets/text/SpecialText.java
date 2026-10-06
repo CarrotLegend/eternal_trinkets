@@ -152,7 +152,8 @@ public final class SpecialText {
             }
             Glyph current = input.get(i++);
             // Crossed/nested toggles have deterministic precedence, never recursion.
-            SpecialTextFormat effect = active.contains(SpecialTextFormat.YINYANG) ? SpecialTextFormat.YINYANG
+            SpecialTextFormat effect = active.contains(SpecialTextFormat.ANGEL) ? SpecialTextFormat.ANGEL
+                    : active.contains(SpecialTextFormat.YINYANG) ? SpecialTextFormat.YINYANG
                     : active.contains(SpecialTextFormat.RAINBOW) ? SpecialTextFormat.RAINBOW : null;
             Style style = effect == null ? current.style() : encode(current.style(), effect);
             special |= format(style) != null;

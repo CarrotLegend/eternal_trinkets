@@ -3,7 +3,8 @@ package com.carrot123.eternal_trinkets.text;
 /** The rainbow toggle grammar copied from Core, extended with one more format. */
 public enum SpecialTextFormat {
     RAINBOW("{/rainbow/}", "rainbow"),
-    YINYANG("{/yinyang}", "yinyang");
+    YINYANG("{/yinyang}", "yinyang"),
+    ANGEL("{/angel}", "angel");
 
     public final String marker;
     public final String id;

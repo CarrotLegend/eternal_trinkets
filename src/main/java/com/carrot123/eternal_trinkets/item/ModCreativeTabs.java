@@ -43,6 +43,10 @@ public final class ModCreativeTabs {
                                 output.accept(ModCurioItems.FOREST_BRACELET.get());
                                 output.accept(ModCurioItems.FOREST_CROWN.get());
                                 output.accept(ModCurioItems.ELF_BOOTS.get());
+                                output.accept(ModCurioItems.EXTINCTION_STONE.get());
+                                output.accept(ModCurioItems.HELL_EYE.get());
+                                output.accept(ModCurioItems.ANGEL_BLAZE_GUARD.get());
+                                output.accept(ModCurioItems.HATRED_DIARY.get());
 
                                 output.accept(ModItems.FUNGUS_CAP_UMBRELLA.get());
                                 output.accept(ModItems.WARPED_FUNGUS_CAP_BOAT.get());

@@ -16,19 +16,24 @@ public final class SpecialTextLayout {
     public static final int HORIZONTAL_PADDING = 8;
     public static final int VERTICAL_PADDING = 4;
     public static final int LINE_HEIGHT = 18;
+    public static final float ANGEL_FOG_SCALE = 1.06F;
+    public static final int ANGEL_HORIZONTAL_PADDING = 6;
+    public static final int ANGEL_VERTICAL_PADDING = 3;
+    public static final int ANGEL_LINE_HEIGHT = 16;
 
     private SpecialTextLayout() { }
 
     public static float advance(List<Glyph> glyphs, int i, StringSplitter.WidthProvider widths) {
         Glyph glyph = glyphs.get(i);
         float width = widths.getWidth(glyph.codePoint(), SpecialText.clearFormat(glyph.style()));
-        if (SpecialText.format(glyph.style()) != SpecialTextFormat.YINYANG) return width;
-        width *= SHADOW_SCALE;
-        if (i == 0 || SpecialText.format(glyphs.get(i - 1).style()) != SpecialTextFormat.YINYANG) {
-            width += HORIZONTAL_PADDING;
+        SpecialTextFormat format = SpecialText.format(glyph.style());
+        if (format != SpecialTextFormat.YINYANG && format != SpecialTextFormat.ANGEL) return width;
+        width *= scale(format);
+        if (i == 0 || SpecialText.format(glyphs.get(i - 1).style()) != format) {
+            width += padding(format);
         }
-        if (i + 1 == glyphs.size() || SpecialText.format(glyphs.get(i + 1).style()) != SpecialTextFormat.YINYANG) {
-            width += HORIZONTAL_PADDING;
+        if (i + 1 == glyphs.size() || SpecialText.format(glyphs.get(i + 1).style()) != format) {
+            width += padding(format);
         }
         return width;
     }
@@ -51,16 +56,16 @@ public final class SpecialTextLayout {
     public static FormattedText head(List<Glyph> glyphs, int maxWidth, StringSplitter.WidthProvider widths) {
         int end = 0;
         float used = 0;
-        boolean inYinYang = false;
+        SpecialTextFormat previous = null;
         while (end < glyphs.size()) {
             Glyph glyph = glyphs.get(end);
-            boolean yinYang = SpecialText.format(glyph.style()) == SpecialTextFormat.YINYANG;
+            SpecialTextFormat format = SpecialText.format(glyph.style());
             float next = widths.getWidth(glyph.codePoint(), SpecialText.clearFormat(glyph.style()))
-                    * (yinYang ? SHADOW_SCALE : 1);
-            if (yinYang && !inYinYang) next += 2 * HORIZONTAL_PADDING;
+                    * scale(format);
+            if (format != previous && padding(format) > 0) next += 2 * padding(format);
             if (used + next > maxWidth) break;
             used += next;
-            inYinYang = yinYang;
+            previous = format;
             end++;
         }
         return SpecialText.formattedOf(glyphs.subList(0, end));
@@ -75,20 +80,20 @@ public final class SpecialTextLayout {
             int end = start;
             int space = -1;
             float used = 0;
-            boolean inYinYang = false;
+            SpecialTextFormat previous = null;
             boolean newline = false;
             while (end < glyphs.size()) {
                 Glyph glyph = glyphs.get(end);
                 if (glyph.codePoint() == '\n') { newline = true; break; }
-                boolean yinYang = SpecialText.format(glyph.style()) == SpecialTextFormat.YINYANG;
+                SpecialTextFormat format = SpecialText.format(glyph.style());
                 float next = widths.getWidth(glyph.codePoint(), SpecialText.clearFormat(glyph.style()))
-                        * (yinYang ? SHADOW_SCALE : 1);
-                if (yinYang && !inYinYang) next += HORIZONTAL_PADDING * 2;
+                        * scale(format);
+                if (format != previous && padding(format) > 0) next += padding(format) * 2;
                 // Always accept one glyph, including widths smaller than a single glyph.
                 if (end > start && used + next > maxWidth) break;
                 used += next;
                 if (glyph.codePoint() == ' ') space = end;
-                inYinYang = yinYang;
+                previous = format;
                 end++;
             }
             int nextStart;
@@ -105,5 +110,15 @@ public final class SpecialTextLayout {
             start = nextStart;
             if (newline && start == glyphs.size()) consumer.accept(FormattedText.EMPTY, false);
         }
+    }
+
+    public static int padding(SpecialTextFormat format) {
+        return format == SpecialTextFormat.YINYANG ? HORIZONTAL_PADDING
+                : format == SpecialTextFormat.ANGEL ? ANGEL_HORIZONTAL_PADDING : 0;
+    }
+
+    public static float scale(SpecialTextFormat format) {
+        return format == SpecialTextFormat.YINYANG ? SHADOW_SCALE
+                : format == SpecialTextFormat.ANGEL ? ANGEL_FOG_SCALE : 1.0F;
     }
 }

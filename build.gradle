@@ -97,6 +97,10 @@ dependencies {
 
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:5.14.1+1.20.1")
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.20.1:4.4.9')
+    implementation fg.deobf("curse.maven:enigmatic-legacy-336184:5600004")
+    compileOnly fg.deobf("curse.maven:terra-curio-1027625:7449534")
+    runtimeOnly fg.deobf("curse.maven:patchouli-306770:7730942")
+    runtimeOnly fg.deobf("curse.maven:caelus-308989:5281700")
 
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
@@ -107,6 +111,16 @@ dependencies {
 }
 
 tasks.named('processResources', ProcessResources).configure {
+    from('src/main/resources/assets/eternal_trinkets/textures/item/curio') {
+        include '黑色小rock.png'
+        rename '黑色小rock.png', 'extinction_stone.png'
+        into 'assets/eternal_trinkets/textures/item/curio'
+    }
+    from('src/main/resources/assets/eternal_trinkets/textures/item/curio') {
+        include '黑色bigeye.png'
+        rename '黑色bigeye.png', 'hell_eye.png'
+        into 'assets/eternal_trinkets/textures/item/curio'
+    }
     // User-supplied originals stay untouched in assets/. Publish byte-identical
     // copies at the resource locations expected by the two generated models.
     from('src/main/resources/assets') {

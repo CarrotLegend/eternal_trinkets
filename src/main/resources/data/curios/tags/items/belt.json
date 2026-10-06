@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "eternal_trinkets:golden_honey_medicine"
+    "eternal_trinkets:golden_honey_medicine",
+    "eternal_trinkets:hatred_diary"
   ]
 }

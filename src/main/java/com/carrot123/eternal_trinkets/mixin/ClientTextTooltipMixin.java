@@ -24,12 +24,19 @@ public abstract class ClientTextTooltipMixin {
 
     @Inject(method = "getHeight", at = @At("HEAD"), cancellable = true)
     private void eternalTrinkets$height(CallbackInfoReturnable<Integer> cir) {
-        if (SpecialText.parse(text).has(SpecialTextFormat.YINYANG)) cir.setReturnValue(SpecialTextLayout.LINE_HEIGHT);
+        SpecialText.Parsed parsed = SpecialText.parse(text);
+        if (parsed.has(SpecialTextFormat.YINYANG)) {
+            cir.setReturnValue(SpecialTextLayout.LINE_HEIGHT);
+        } else if (parsed.has(SpecialTextFormat.ANGEL)) {
+            cir.setReturnValue(SpecialTextLayout.ANGEL_LINE_HEIGHT);
+        }
     }
 
     @ModifyVariable(method = "renderText", at = @At("HEAD"), argsOnly = true, ordinal = 1)
     private int eternalTrinkets$topPadding(int y) {
-        return y + (SpecialText.parse(text).has(SpecialTextFormat.YINYANG) ? SpecialTextLayout.VERTICAL_PADDING : 0);
+        SpecialText.Parsed parsed = SpecialText.parse(text);
+        return y + (parsed.has(SpecialTextFormat.YINYANG) ? SpecialTextLayout.VERTICAL_PADDING
+                : parsed.has(SpecialTextFormat.ANGEL) ? SpecialTextLayout.ANGEL_VERTICAL_PADDING : 0);
     }
 
     @Inject(method = "renderText", at = @At("HEAD"))

@@ -17,6 +17,10 @@ import com.carrot123.eternal_trinkets.entity.neutral.WarpedFungusSprite;
 import com.carrot123.eternal_trinkets.entity.neutral.WarpedFungusUmbrella;
 import com.carrot123.eternal_trinkets.event.FungusCapUmbrellaEvents;
 import com.carrot123.eternal_trinkets.event.ForestCrownEvents;
+import com.carrot123.eternal_trinkets.event.ExtinctionStoneAttributeEvents;
+import com.carrot123.eternal_trinkets.event.HellEyeCombatEvents;
+import com.carrot123.eternal_trinkets.event.AngelBlazeGuardEvents;
+import com.carrot123.eternal_trinkets.event.HatredDiaryEvents;
 import com.carrot123.eternal_trinkets.event.GrumpyPufferfishEvents;
 import com.carrot123.eternal_trinkets.event.LuckyCloverEvents;
 import com.carrot123.eternal_trinkets.event.NewCurioEvents;
@@ -83,6 +87,10 @@ public final class EternalTrinkets {
         MinecraftForge.EVENT_BUS.register(new StarlightStingEvents());
         MinecraftForge.EVENT_BUS.register(new NewCurioEvents());
         MinecraftForge.EVENT_BUS.register(new ForestCrownEvents());
+        MinecraftForge.EVENT_BUS.register(new ExtinctionStoneAttributeEvents());
+        MinecraftForge.EVENT_BUS.register(new HellEyeCombatEvents());
+        MinecraftForge.EVENT_BUS.register(new AngelBlazeGuardEvents());
+        MinecraftForge.EVENT_BUS.register(new HatredDiaryEvents());
     }
 
     private void onEntityAttributeCreation(

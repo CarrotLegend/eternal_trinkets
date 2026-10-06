@@ -25,6 +25,10 @@ public final class SpecialTextRenderer {
     private static final int SHADOW_ALPHA = 0x80;
     private static final int SHADOW_OUTLINE_ALPHA = 0x70;
     private static final int SHADOW_OUTLINE_RGB = 0xD5D5D5;
+    private static final int ANGEL_BLUE = 0x55AAFF;
+    private static final int ANGEL_ORANGE = 0xFF8A00;
+    private static final long ANGEL_FOG_PERIOD_NANOS = 3_600_000_000L;
+    private static final int ANGEL_FOG_LAYERS = 5;
     // Copied from Core's RainbowTextHelper, unchanged.
     public static final long RAINBOW_CYCLE_TIME_MS = 3000L;
     public static final float CHARACTER_HUE_OFFSET = 0.08F;
@@ -87,6 +91,13 @@ public final class SpecialTextRenderer {
                         + width * (SpecialTextLayout.SHADOW_SCALE - 1) * .5F;
                 drawYinYang(font, run.text(), width, baseX, y, color, matrix, buffer, mode, light);
                 cursor += width * SpecialTextLayout.SHADOW_SCALE + 2 * SpecialTextLayout.HORIZONTAL_PADDING;
+            } else if (run.format() == SpecialTextFormat.ANGEL) {
+                float baseX = cursor + SpecialTextLayout.ANGEL_HORIZONTAL_PADDING
+                        + width * (SpecialTextLayout.ANGEL_FOG_SCALE - 1) * .5F;
+                drawAngel(font, run.text(), width, baseX, y,
+                        color, matrix, buffer, mode, light);
+                cursor += width * SpecialTextLayout.ANGEL_FOG_SCALE
+                        + 2 * SpecialTextLayout.ANGEL_HORIZONTAL_PADDING;
             } else {
                 FormattedCharSequence text = run.format() == SpecialTextFormat.RAINBOW
                         ? rainbow(run.text(), baseHue, rainbowIndex) : run.text();
@@ -97,6 +108,34 @@ public final class SpecialTextRenderer {
             }
         }
         return (int) cursor + (dropShadow ? 1 : 0);
+    }
+
+    private static void drawAngel(Font font, FormattedCharSequence text, float width,
+                                  float x, float y, int color, Matrix4f matrix,
+                                  MultiBufferSource buffer, Font.DisplayMode mode, int light) {
+        int alpha = (color & 0xFC000000) == 0 ? 255 : color >>> 24;
+        double phase = Math.floorMod(Util.getNanos(), ANGEL_FOG_PERIOD_NANOS)
+                * (Math.PI * 2.0) / ANGEL_FOG_PERIOD_NANOS;
+        FormattedCharSequence white = recolor(text, 0xFFFFFF);
+        for (int layer = 0; layer < ANGEL_FOG_LAYERS; layer++) {
+            double layerPhase = phase + layer * Math.PI * 2.0 / ANGEL_FOG_LAYERS;
+            float fogX = x + 1.3F * (float) Math.sin(layerPhase)
+                    + .5F * (float) Math.sin(phase * 1.7 + layer);
+            float fogY = y + .8F * (float) Math.cos(layerPhase)
+                    + .35F * (float) Math.sin(phase * 1.3 + layer);
+            float scale = 1.02F + layer * .01F;
+            float centerX = fogX + width * .5F;
+            float centerY = fogY + font.lineHeight * .5F;
+            Matrix4f fogMatrix = new Matrix4f(matrix).translate(centerX, centerY, 0)
+                    .scale(scale).translate(-centerX, -centerY, 0);
+            int fogAlpha = Math.round((0x50 - layer * 0x0D) * alpha / 255F);
+            font.drawInBatch(white, fogX, fogY, fogAlpha << 24 | 0xFFFFFF,
+                    false, fogMatrix, buffer, mode, 0, light);
+        }
+        Matrix4f mainMatrix = new Matrix4f(matrix);
+        font.drawInBatch8xOutline(recolor(text, ANGEL_BLUE), x, y,
+                alpha << 24 | ANGEL_BLUE, alpha << 24 | ANGEL_ORANGE,
+                mainMatrix, buffer, light);
     }
 
     private static void drawYinYang(Font font, FormattedCharSequence text, float width,
