@@ -21,6 +21,7 @@ import com.carrot123.eternal_trinkets.event.ExtinctionStoneAttributeEvents;
 import com.carrot123.eternal_trinkets.event.HellEyeCombatEvents;
 import com.carrot123.eternal_trinkets.event.AngelBlazeGuardEvents;
 import com.carrot123.eternal_trinkets.event.HatredDiaryEvents;
+import com.carrot123.eternal_trinkets.event.ArcherAimingScopeEvents;
 import com.carrot123.eternal_trinkets.event.GrumpyPufferfishEvents;
 import com.carrot123.eternal_trinkets.event.LuckyCloverEvents;
 import com.carrot123.eternal_trinkets.event.NewCurioEvents;
@@ -91,6 +92,7 @@ public final class EternalTrinkets {
         MinecraftForge.EVENT_BUS.register(new HellEyeCombatEvents());
         MinecraftForge.EVENT_BUS.register(new AngelBlazeGuardEvents());
         MinecraftForge.EVENT_BUS.register(new HatredDiaryEvents());
+        MinecraftForge.EVENT_BUS.register(new ArcherAimingScopeEvents());
     }
 
     private void onEntityAttributeCreation(

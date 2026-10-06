@@ -150,5 +150,8 @@
   "tooltip.eternal_trinkets.angel_blaze_guard.undead": "对亡灵伤害增加25%",
   "tooltip.eternal_trinkets.angel_blaze_guard.flight": "你能够飞行",
   "tooltip.eternal_trinkets.angel_blaze_guard.flight_speed": "飞行速度 +50%",
-  "tooltip.eternal_trinkets.hatred_diary.revenge": "攻击过你的敌人会被施加“复仇目标”，受到的伤害+20%。"
+  "tooltip.eternal_trinkets.hatred_diary.revenge": "攻击过你的敌人会被施加“复仇目标”，受到的伤害+20%。",
+  "item.eternal_trinkets.sighing_shield": "叹息之盾",
+  "item.eternal_trinkets.jade_bracelet": "玉镯",
+  "item.eternal_trinkets.archer_aiming_scope": "弓手辅助瞄准镜"
 }

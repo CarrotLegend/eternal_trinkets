@@ -77,6 +77,15 @@ public final class ModCurioItems {
     public static final RegistryObject<Item> HATRED_DIARY =
             ITEMS.register("hatred_diary", HatredDiaryItem::new);
 
+    public static final RegistryObject<Item> SIGHING_SHIELD =
+            ITEMS.register("sighing_shield", SighingShieldItem::new);
+
+    public static final RegistryObject<Item> JADE_BRACELET =
+            ITEMS.register("jade_bracelet", JadeBraceletItem::new);
+
+    public static final RegistryObject<Item> ARCHER_AIMING_SCOPE =
+            ITEMS.register("archer_aiming_scope", ArcherAimingScopeItem::new);
+
     private ModCurioItems() {
         throw new UnsupportedOperationException("utility class");
     }

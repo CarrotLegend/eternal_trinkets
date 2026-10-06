@@ -150,5 +150,8 @@
   "tooltip.eternal_trinkets.angel_blaze_guard.undead": "Deal 25% more damage to undead",
   "tooltip.eternal_trinkets.angel_blaze_guard.flight": "You can fly",
   "tooltip.eternal_trinkets.angel_blaze_guard.flight_speed": "Flight speed +50%",
-  "tooltip.eternal_trinkets.hatred_diary.revenge": "Enemies that hurt you become Revenge Targets and take 20% more damage."
+  "tooltip.eternal_trinkets.hatred_diary.revenge": "Enemies that hurt you become Revenge Targets and take 20% more damage.",
+  "item.eternal_trinkets.sighing_shield": "Sighing Shield",
+  "item.eternal_trinkets.jade_bracelet": "Jade Bracelet",
+  "item.eternal_trinkets.archer_aiming_scope": "Archer Aiming Scope"
 }

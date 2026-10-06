@@ -121,6 +121,21 @@ tasks.named('processResources', ProcessResources).configure {
         rename '黑色bigeye.png', 'hell_eye.png'
         into 'assets/eternal_trinkets/textures/item/curio'
     }
+    from('src/main/resources/assets/eternal_trinkets/textures/item/curio') {
+        include '大盾.png'
+        rename '大盾.png', 'sighing_shield.png'
+        into 'assets/eternal_trinkets/textures/item/curio'
+    }
+    from('src/main/resources/assets/eternal_trinkets/textures/item/curio') {
+        include 'jade.png'
+        rename 'jade.png', 'jade_bracelet.png'
+        into 'assets/eternal_trinkets/textures/item/curio'
+    }
+    from('src/main/resources/assets/eternal_trinkets/textures/item/curio') {
+        include '瞄具.png'
+        rename '瞄具.png', 'archer_aiming_scope.png'
+        into 'assets/eternal_trinkets/textures/item/curio'
+    }
     // User-supplied originals stay untouched in assets/. Publish byte-identical
     // copies at the resource locations expected by the two generated models.
     from('src/main/resources/assets') {

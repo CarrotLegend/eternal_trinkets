@@ -47,6 +47,9 @@ public final class ModCreativeTabs {
                                 output.accept(ModCurioItems.HELL_EYE.get());
                                 output.accept(ModCurioItems.ANGEL_BLAZE_GUARD.get());
                                 output.accept(ModCurioItems.HATRED_DIARY.get());
+                                output.accept(ModCurioItems.SIGHING_SHIELD.get());
+                                output.accept(ModCurioItems.JADE_BRACELET.get());
+                                output.accept(ModCurioItems.ARCHER_AIMING_SCOPE.get());
 
                                 output.accept(ModItems.FUNGUS_CAP_UMBRELLA.get());
                                 output.accept(ModItems.WARPED_FUNGUS_CAP_BOAT.get());

@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "eternal_trinkets:fungal_heart"
+        "eternal_trinkets:fungal_heart",
+        "eternal_trinkets:sighing_shield"
     ]
 }
